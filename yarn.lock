@@ -2548,7 +2548,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native/typescript-config@npm:0.74.84":
+"@react-native/typescript-config@npm:^0.74.84":
   version: 0.74.84
   resolution: "@react-native/typescript-config@npm:0.74.84"
   checksum: 10c0/63c2951a6e639219463b786e2dfe86de882391c5d35b8e305c77c9b4395d8a6b2d5940b14fc27a0338b62b20d81750a90a13452106be4bf45ba0a3b8d786c24d
@@ -3006,7 +3006,7 @@ __metadata:
     "@react-native/babel-preset": "npm:0.74.84"
     "@react-native/eslint-config": "npm:0.74.84"
     "@react-native/metro-config": "npm:0.74.84"
-    "@react-native/typescript-config": "npm:0.74.84"
+    "@react-native/typescript-config": "npm:^0.74.84"
     "@types/react": "npm:^18.2.6"
     "@types/react-test-renderer": "npm:^18.0.0"
     babel-jest: "npm:^29.6.3"
