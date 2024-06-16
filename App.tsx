@@ -1,41 +1,35 @@
 import React from 'react';
-import {
-  Alert,
-  Button,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableHighlight,
-  TouchableOpacity,
-} from 'react-native';
-import {createRandomPerson} from './src/data/createRandomPerson';
+import {PaperProvider} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
+import {DefaultTheme} from 'react-native-paper';
+import {SafeAreaView, StyleSheet, Text} from 'react-native';
 
-const person = createRandomPerson();
+export default function App(): React.JSX.Element {
+  const theme = useTheme();
 
-const onPress = () => {
-  Alert.alert('home pressed.', 'message');
-};
-
-function App(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Text>{JSON.stringify(person, null, 2)}</Text>
-        <TouchableOpacity onPress={onPress}>
-          <Text>TouchableOpacity</Text>
-        </TouchableOpacity>
-        <TouchableHighlight onPress={onPress}>
-          <Text>TochableHightlight</Text>
-        </TouchableHighlight>
-        <Button title="button" onPress={onPress} />
-        <TextInput
-          placeholder="type something"
-          onFocus={() => console.log('focused')}
-        />
-      </ScrollView>
-    </SafeAreaView>
+    <PaperProvider>
+      <SafeAreaView style={[styles.safeAreaView]}>
+        <Text style={styles.text}>Hello world!!</Text>
+        <Text
+          style={{
+            backgroundColor: theme.colors.primaryContainer,
+          }}>
+          Hello React-Native!!
+        </Text>
+      </SafeAreaView>
+    </PaperProvider>
   );
 }
 
-export default App;
+const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: DefaultTheme.colors.primary,
+  },
+  text: {
+    fontSize: 20,
+  },
+});
