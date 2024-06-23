@@ -1,47 +1,57 @@
 import React from 'react';
 import {
-  Platform,
-  Dimensions,
   SafeAreaView,
   StyleSheet,
   Text,
+  ImageBackground,
+  Image,
+  View,
 } from 'react-native';
-import {PaperProvider} from 'react-native-paper';
-import {useTheme} from 'react-native-paper';
-import {DefaultTheme} from 'react-native-paper';
+import * as D from './src/data';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function App(): React.JSX.Element {
-  const theme = useTheme();
+  const avatarUrl = D.randomAvatarUrl();
 
   return (
-    <PaperProvider>
-      <SafeAreaView style={[styles.safeAreaView]}>
-        <Text style={styles.text}>Hello world!!</Text>
-        <Text
-          style={{
-            backgroundColor: theme.colors.primaryContainer,
-          }}>
-          {`현재 OS는 ${Platform.OS}이며, 실행된 폰의 크기는 ${
-            Dimensions.get('window').width
-          } x ${Dimensions.get('window').height}입니다.`}
-        </Text>
-      </SafeAreaView>
-    </PaperProvider>
+    <SafeAreaView style={[styles.flex]}>
+      <ImageBackground
+        style={[styles.flex, styles.imageBackground]}
+        source={require('./src/assets/images/bg.jpg')}>
+        <Image
+          source={{
+            uri: avatarUrl,
+          }}
+          style={[styles.image]}
+        />
+        <View>
+          <Text style={[styles.text]}>some text here!!</Text>
+          <Text style={[styles.text, styles.bold]}>some text here!!</Text>
+          <Icon name="github-alt" size={32} color="white" />
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeAreaView: {
+  flex: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: DefaultTheme.colors.primary,
+  },
+  imageBackground: {
+    padding: 10,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
   text: {
-    fontSize: 20,
-    padding: Platform.select({
-      ios: 10,
-      android: 20,
-    }),
+    color: 'white',
+    fontSize: 25,
+    textAlign: 'center',
+  },
+  bold: {
+    fontFamily: 'DancingScript-Bold',
   },
 });
